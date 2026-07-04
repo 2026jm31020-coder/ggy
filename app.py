@@ -18,7 +18,7 @@ st.markdown("환자의 사상체질과 라이프스타일 데이터를 기반으
 # ==========================================
 @st.cache_resource
 def train_ai_model():
-    pptx_path = r"C:\Users\ihjang\Desktop\환자데이터.pptx" 
+    pptx_path = "환자데이터.pptx" 
     all_rows = []
     columns = ['sex', 'age', 'constitution', 'sleep', 'stress', 'exercise', 'smoking', 'alcohol', 'treatment']
     
