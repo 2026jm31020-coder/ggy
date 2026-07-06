@@ -4,6 +4,7 @@ import pandas as pd
 import numpy as np
 import warnings
 from sklearn.ensemble import RandomForestClassifier
+import plotly.express as px
 
 # 경고 메시지 끄기
 warnings.filterwarnings('ignore', category=UserWarning)
@@ -136,8 +137,8 @@ summary_df = pd.DataFrame({
     "지표": ["성별", "나이", "사상체질", "수면시간", "스트레스", "운동시간", "흡연", "음주"],
     "입력값": ["여성" if sex==1 else "남성", f"{age}세", const_names[constitution], f"{sleep}시간", f"{stress}점", f"{exercise}시간", "흡연" if smoking==1 else "비흡연", "음주" if alcohol==1 else "비음주"]
 })
-# st.dataframe(summary_df, use_container_width=True, hide_index=True)
-st.table(summary_df)
+st.dataframe(summary_df, use_container_width=True, hide_index=True)
+# st.table(summary_df)
 
 if st.button("🔮 치료 결과 실시간 예측하기", type="primary", use_container_width=True):
     new_input = pd.DataFrame([[sex, age, constitution, sleep, stress, exercise, smoking, alcohol]], 
@@ -158,4 +159,27 @@ if st.button("🔮 치료 결과 실시간 예측하기", type="primary", use_co
         '치료 결과': ['악화', '변화없음', '호전됨'],
         '확률 (%)': [pred_proba[0]*100, pred_proba[1]*100, pred_proba[2]*100]
     })
-    st.bar_chart(data=proba_df, x='치료 결과', y='확률 (%)', color="#4A90E2")
+    # st.bar_chart(data=proba_df, x='치료 결과', y='확률 (%)', color="#4A90E2")
+    # 1. 기존 st.bar_chart 대신 Plotly로 막대그래프 생성
+    fig = px.bar(
+        proba_df, 
+        x='치료 결과', 
+        y='확률 (%)', 
+        color_discrete_sequence=["#4A90E2"]  # 기존에 쓰던 파란색 색상 그대로 적용
+    )
+    
+    # 2. 마우스 스크롤 및 모든 인터랙션 완전히 차단 (핵심 코드)
+    fig.update_layout(
+        xaxis=dict(fixedrange=True),  # 가로축 확대/축소 금지
+        yaxis=dict(fixedrange=True),  # 세로축 확대/축소 금지
+        dragmode=False,               # 마우스로 드래그해서 범위 지정하는 것 금지
+        plot_bgcolor="rgba(0,0,0,0)", # 배경 투명하게
+        margin=dict(l=20, r=20, t=20, b=20) # 여백 조절
+    )
+    
+    # 3. Streamlit 화면에 출력 (마우스 휠 줌 기능 및 우측 상단 메뉴바 숨기기)
+    st.plotly_chart(
+        fig, 
+        config={'scrollZoom': False, 'displayModeBar': False}, 
+        use_container_width=True
+    )
