@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import warnings
 from sklearn.ensemble import RandomForestClassifier
-import plotly.express as px
 
 # 경고 메시지 끄기
 warnings.filterwarnings('ignore', category=UserWarning)
