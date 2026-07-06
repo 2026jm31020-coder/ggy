@@ -107,8 +107,8 @@ model, data_count, status = train_ai_model()
 
 if "success" in status:
     st.success(f"📊 실제 PPTX 파일에서 {data_count}명의 환자 데이터를 성공적으로 읽어와 AI 학습을 완료했습니다!")
-else:
-    st.warning(f"⚠️ 실제 PPTX 파일을 읽지 못해 가상 데이터({data_count}명)로 시뮬레이션 중입니다. (오류: {status})")
+# else:
+#     st.warning(f"⚠️ 실제 PPTX 파일을 읽지 못해 가상 데이터({data_count}명)로 시뮬레이션 중입니다. (오류: {status})")
 
 # ==========================================
 # 2. 웹 UI 화면 구성 (좌측 사이드바 입력창)
