@@ -136,7 +136,8 @@ summary_df = pd.DataFrame({
     "지표": ["성별", "나이", "사상체질", "수면시간", "스트레스", "운동시간", "흡연", "음주"],
     "입력값": ["여성" if sex==1 else "남성", f"{age}세", const_names[constitution], f"{sleep}시간", f"{stress}점", f"{exercise}시간", "흡연" if smoking==1 else "비흡연", "음주" if alcohol==1 else "비음주"]
 })
-st.dataframe(summary_df, use_container_width=True, hide_index=True)
+# st.dataframe(summary_df, use_container_width=True, hide_index=True)
+st.table(summary_df)
 
 if st.button("🔮 치료 결과 실시간 예측하기", type="primary", use_container_width=True):
     new_input = pd.DataFrame([[sex, age, constitution, sleep, stress, exercise, smoking, alcohol]], 
