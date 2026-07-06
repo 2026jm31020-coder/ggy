@@ -65,7 +65,7 @@ def train_ai_model():
         
     except Exception as e:
         np.random.seed(42)
-        num_samples = 100
+        num_samples = 1000
         mock_df = pd.DataFrame({
             'sex': np.random.choice([0, 1], num_samples),
             'age': np.random.randint(20, 80, num_samples),
