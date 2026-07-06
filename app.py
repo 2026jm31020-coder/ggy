@@ -139,7 +139,7 @@ summary_df = pd.DataFrame({
 st.dataframe(summary_df, use_container_width=True, hide_index=True)
 # st.table(summary_df)
 
-if st.button("🔮 치료 결과 실시간 예측하기", type="primary", use_container_width=True):
+if st.button("치료 결과 실시간 예측하기", type="primary", use_container_width=True):
     new_input = pd.DataFrame([[sex, age, constitution, sleep, stress, exercise, smoking, alcohol]], 
                              columns=['sex', 'age', 'constitution', 'sleep', 'stress', 'exercise', 'smoking', 'alcohol'])
     
