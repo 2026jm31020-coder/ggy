@@ -10,8 +10,27 @@ warnings.filterwarnings('ignore', category=UserWarning)
 
 # 웹페이지 상단 제목 및 레이아웃 설정
 st.set_page_config(page_title="한의학 체질 기반 치료 예측 AI", layout="centered")
-st.image("logo.jpg",width=300)
-st.title("사상체질 기반 AI 치료 효과 예측 시스템")
+
+# 1. 화면을 로고 칸(col1)과 제목 칸(col2)으로 나누기 (비율 조정 가능)
+col1, col2 = st.columns([1, 3])
+
+with col1:
+    # 로고 이미지 넣기
+    st.image("logo.jpg", width=150)  # 한 줄에 넣기 위해 width를 조금 줄이는 것이 이쁩니다.
+
+with col2:
+    # 2. HTML과 CSS를 사용해 위쪽 여백을 없애고 이미지와 높이 맞추기
+    st.markdown(
+        """
+        <h1 style='margin-top: 15px; margin-bottom: 0px; font-size: 2.2rem;'>
+            사상체질 기반 AI 치료 효과 예측 시스템
+        </h1>
+        """, 
+        unsafe_allow_html=True
+    )
+
+# st.image("logo.jpg",width=300)
+# st.title("사상체질 기반 AI 치료 효과 예측 시스템")
 st.markdown("환자의 사상체질과 라이프스타일 데이터를 기반으로 맞춤형 치료 결과를 예측하는 인공지능 프로토타입입니다.")
 
 # ==========================================
