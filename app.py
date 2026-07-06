@@ -9,7 +9,7 @@ from sklearn.ensemble import RandomForestClassifier
 warnings.filterwarnings('ignore', category=UserWarning)
 
 # 웹페이지 상단 제목 및 레이아웃 설정
-st.set_page_config(page_title="한의학 체질 기반 치료 예측 AI", layout="centered")
+st.set_page_config(page_title="한의학 체질 기반 치료 예측 AI", layout="wide")
 
 # 1. 화면을 로고 칸(col1)과 제목 칸(col2)으로 나누기 (비율 조정 가능)
 col1, col2 = st.columns([1, 3])
