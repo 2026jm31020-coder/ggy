@@ -10,7 +10,8 @@ warnings.filterwarnings('ignore', category=UserWarning)
 
 # 웹페이지 상단 제목 및 레이아웃 설정
 st.set_page_config(page_title="한의학 체질 기반 치료 예측 AI", layout="centered")
-st.title("🔮 사상체질 기반 AI 치료 효과 예측 시스템")
+st.image("logo.png", use_container_width=True)
+st.title("사상체질 기반 AI 치료 효과 예측 시스템")
 st.markdown("환자의 사상체질과 라이프스타일 데이터를 기반으로 맞춤형 치료 결과를 예측하는 인공지능 프로토타입입니다.")
 
 # ==========================================
